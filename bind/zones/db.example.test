@@ -1,0 +1,10 @@
+$TTL 60
+@ IN SOA ns1.example.test. admin.example.test. (
+  2024061801 ; Serial
+  3600       ; Refresh
+  600        ; Retry
+  86400      ; Expire
+  60 )       ; Negative Cache TTL
+
+  IN NS ns1.example.test.
+ns1 IN A 127.0.0.1

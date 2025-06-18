@@ -1,0 +1,5 @@
+FROM internetsystemsconsortium/bind9:9.18
+COPY config/named.conf /etc/bind/named.conf
+COPY keys /etc/bind/keys
+COPY zones /etc/bind/zones
+RUN mkdir -p /var/bind && chown -R bind:bind /etc/bind /var/bind

@@ -1,0 +1,11 @@
+FROM node:18
+
+# Install bind9utils for nsupdate
+RUN apt-get update && apt-get install -y dnsutils bind9utils
+
+# Setup app
+WORKDIR /app
+COPY . /app
+RUN npm install
+
+CMD ["node", "index.js"]

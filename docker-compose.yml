@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  dns-server:
+    build:
+      context: ./bind
+      dockerfile: ../Dockerfile.dns
+    container_name: dns-server
+    ports:
+      - "8053:53/udp"
+      - "8053:53/tcp"
+    volumes:
+      - ./bind/zones:/etc/bind/zones
+      - ./bind/keys:/etc/bind/keys
+    restart: always
+
+  api:
+    build:
+      context: ./api
+      dockerfile: ../Dockerfile.api
+    container_name: dns-api
+    volumes:
+      - ./bind/keys:/app/bind/keys  # This maps your local keys to /app/bind/keys in container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - dns-server
