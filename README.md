@@ -5,7 +5,7 @@ This project is a full Proof of Concept (POC) for a Dynamic DNS system using BIN
 
 The Node.js API acts as a bridge between HTTP requests and the BIND9 server, translating REST API calls into `nsupdate` commands. This allows web applications to manage DNS records programmatically without direct access to the DNS server.
 
----
+
 
 ## 🎯 Task Description
 1. Run BIND9 DNS server inside a Docker container.
@@ -16,7 +16,7 @@ The Node.js API acts as a bridge between HTTP requests and the BIND9 server, tra
 6. Dockerize the entire stack.
 7. Test the setup using Postman and `dig`.
 
----
+
 
 ## 🧱 Project Setup: Folder Structure & Files
 
@@ -96,7 +96,7 @@ tsig-keygen -a hmac-sha256 update-key > update-key.key
 
 The TSIG key acts as a shared secret between the API and DNS server. Both containers need access to this key file for authentication to work properly.
 
----
+
 
 ## 🚀 Node.js REST API Setup
 
@@ -174,7 +174,7 @@ exports.createAddRecordCommand = (name, type, value) => {
 
 This utility generates the `nsupdate` command format. The `dns-server` hostname works because Docker Compose creates a network where containers can communicate using their service names.
 
----
+
 
 ## 🐳 Docker Setup
 
@@ -240,7 +240,7 @@ services:
 
 The volume mappings ensure both containers can access the TSIG key file. The `depends_on` directive ensures the DNS server starts before the API, though you may need to add health checks for production use.
 
----
+
 
 ## 🧪 Testing & Verification
 
@@ -314,7 +314,7 @@ volumes:
 ```
 which ensures your updated zone file and its journal (.jnl) are stored on your host.
 
----
+
 
 ## 🔧 **Troubleshooting**
 
@@ -326,7 +326,7 @@ If you encounter the error `could not read key from /bind/keys/update-key.{priva
 
 The path must match exactly where Docker mounts the volume inside the API container.
 
----
+
 
 ## ✅ Conclusion
 You now have a working Dynamic DNS system with:
