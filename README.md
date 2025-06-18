@@ -3,10 +3,12 @@
 ## 📌 Introduction
 This project is a full Proof of Concept (POC) for a Dynamic DNS system using BIND9 as the DNS server and Node.js as a REST API to add DNS records dynamically (e.g., A, CNAME, TXT). The setup runs in Docker with persistent storage and secure updates using TSIG keys.
 
-![alt text](image.png)
+![alt text](./assets/image.png)
 
 The Node.js API acts as a bridge between HTTP requests and the BIND9 server, translating REST API calls into `nsupdate` commands. This allows web applications to manage DNS records programmatically without direct access to the DNS server.
 
+
+![alt text](./assets/image-1.png)
 
 
 ## 🎯 Task Description
